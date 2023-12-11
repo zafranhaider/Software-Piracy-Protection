@@ -1,0 +1,73 @@
+import tkinter as tk
+from tkinter import PhotoImage
+
+
+def submit_report():
+    # Get user input
+    name = name_entry.get()
+    email = email_entry.get()
+    description = description_text.get("1.0", tk.END)
+
+    # Validate input
+    if not name or not email or not description:
+        error_label.config(text="Please fill out all fields!", fg="red")
+        return
+
+    # Create bug report message
+    report_message = f"**Bug Report:**\n\nName: {name}\nEmail: {email}\n\nDescription:\n{description}"
+
+    # Send bug report (replace with actual sending logic)
+    print(report_message)
+    error_label.config(text="Bug report submitted successfully!", fg="blue")
+
+    # Clear form
+    name_entry.delete(0, tk.END)
+    email_entry.delete(0, tk.END)
+    description_text.delete("1.0", tk.END)
+
+
+def close_window():
+    root.destroy()
+
+
+# Create window
+root = tk.Tk()
+root.title("Bug Report Form")
+root.geometry("1366x768")
+
+# Set background image
+img_path = "img.png"
+bg_image = PhotoImage(file=img_path)
+bg_label = tk.Label(root, image=bg_image)
+bg_label.place(relwidth=1, relheight=1)
+
+# Create labels
+title_label = tk.Label(root, text="Bug Report", font=("Arial", 18))
+name_label = tk.Label(root, text="Name:")
+email_label = tk.Label(root, text="Email:")
+description_label = tk.Label(root, text="Description:")
+error_label = tk.Label(root, text="", fg="red")
+
+# Create input fields
+name_entry = tk.Entry(root)
+email_entry = tk.Entry(root)
+description_text = tk.Text(root, width=50, height=10)
+
+# Create buttons
+submit_button = tk.Button(root, text="Submit Report", command=submit_report)
+exit_button = tk.Button(root, text="Back to Main Page", command=close_window)
+
+# Place widgets
+title_label.pack(pady=10)
+name_label.pack()
+name_entry.pack()
+email_label.pack()
+email_entry.pack()
+description_label.pack()
+description_text.pack()
+error_label.pack()
+submit_button.pack(pady=10)
+exit_button.pack(pady=10)
+
+# Start main loop
+root.mainloop()

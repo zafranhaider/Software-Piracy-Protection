@@ -2,6 +2,7 @@ import tkinter
 import tkinter as tk
 from pygame import mixer
 from tkinter import PhotoImage
+from subprocess import Popen
 import webbrowser
 import os
 class MyApp:
@@ -42,7 +43,7 @@ class MyApp:
         self.help_pagea = tk.Button(self.root, text="Help", command=self.open_help, font=("Helvetica", 14), fg="black")
         self.help_pagea.pack()
 
-        self.help_pageb = tk.Button(self.root, text="Bug Report", command=self.bug_page, font=("Helvetica", 14), fg="black")
+        self.help_pageb = tk.Button(self.root, text="Bug Report", command=lambda: Popen (["python","bug.pak"]), font=("Helvetica", 14), fg="black")
         self.help_pageb.pack()
 
         self.about_button = tk.Button(self.root, text="About Us", command=self.open_about_page, font=("Helvetica", 14), fg="black")
@@ -75,10 +76,10 @@ class MyApp:
         register_button = tk.Button(protect_frame, text="Register Software", command=self.open_link, font=("Helvetica", 14), fg="black")
         register_button.pack()
 
-        lock_button = tk.Button(protect_frame, text="Pack", command=self.open_packer, font=("Helvetica", 14), fg="black")
+        lock_button = tk.Button(protect_frame, text="Pack", command=lambda: Popen(["python","packer.pak"]), font=("Helvetica", 14), fg="black")
         lock_button.pack()
 
-        encrypt_button = tk.Button(protect_frame, text="Encrypt-Decrypt", command=self.open_encrypt_decrypt, font=("Helvetica", 14), fg="black")
+        encrypt_button = tk.Button(protect_frame, text="Encrypt-Decrypt", command=lambda: Popen(["python","enc.pak"]), font=("Helvetica", 14), fg="black")
         encrypt_button.pack()
 
         back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
