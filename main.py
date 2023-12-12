@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import ttk 
 import tkinter as tk
 from pygame import mixer
 from tkinter import PhotoImage
@@ -37,24 +38,23 @@ class MyApp:
         self.title_label = tk.Label(self.root, text="Welcome", font=("Helvetica", 24), bg="blue", fg="black")
         self.title_label.pack(pady=60)
 
-        self.protect_button = tk.Button(self.root, text="Protect Piracy", command=self.open_protect_page, font=("Helvetica", 14), fg="black")
-        self.protect_button.pack()
+        self.protect_button = ttk.Button(self.root, text="Protect Piracy", command=self.open_protect_page)
+        self.protect_button.pack(pady=10)
 
-        self.help_pagea = tk.Button(self.root, text="Help", command=self.open_help, font=("Helvetica", 14), fg="black")
-        self.help_pagea.pack()
+        self.help_pagea = ttk.Button(self.root, text="Help", command=self.open_help)
+        self.help_pagea.pack(pady=10)
 
-        self.help_pageb = tk.Button(self.root, text="Bug Report", command=lambda: Popen (["python","bug.pak"]), font=("Helvetica", 14), fg="black")
-        self.help_pageb.pack()
+        self.help_pageb = ttk.Button(self.root, text="Bug Report", command=lambda: Popen(["python","bug.pak"]))
+        self.help_pageb.pack(pady=10)
 
-        self.about_button = tk.Button(self.root, text="About Us", command=self.open_about_page, font=("Helvetica", 14), fg="black")
-        self.about_button.pack()
+        self.about_button = ttk.Button(self.root, text="About Us", command=self.open_about_page)
+        self.about_button.pack(pady=10)
 
-        self.visit_button = tk.Button(self.root, text="Visit Us", command=self.visit_link, font=("Helvetica", 14), fg="black")
-        self.visit_button.pack()
+        self.visit_button = ttk.Button(self.root, text="Donate", command=self.bug_page)
+        self.visit_button.pack(pady=10)
 
-        self.exit_button = tk.Button(self.root, text="Exit", command=self.root.destroy, font=("Helvetica", 14), fg="black")
-        self.exit_button.pack()
-
+        self.exit_button = ttk.Button(self.root, text="Exit", command=self.root.destroy)
+        self.exit_button.pack(pady=10)
       
 
 # The Protect Page 
@@ -67,7 +67,7 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        protect_frame = tk.Frame(self.root, bg="light blue")
+        protect_frame = tk.Frame(self.root, bg="dark blue")
         protect_frame.pack()
 
         title_label = tk.Label(protect_frame, text="Protect Piracy Page", font=("Helvetica", 24), bg="yellow", fg="black")
@@ -94,7 +94,7 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        about_frame = tk.Frame(self.root, bg="light blue")
+        about_frame = tk.Frame(self.root, bg="dark blue")
         about_frame.pack()
 
         title_label = tk.Label(about_frame, text="Help Page", font=("Helvetica", 24), bg="blue", fg="black")
@@ -130,13 +130,13 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        protect_frame = tk.Frame(self.root, bg="light blue")
+        protect_frame = tk.Frame(self.root, bg="dark blue")
         protect_frame.pack()
 
-        title_label = tk.Label(protect_frame, text="Report The Bug", font=("Helvetica", 24), bg="Red", fg="black")
+        title_label = tk.Label(protect_frame, text="Donate Us", font=("Helvetica", 24), bg="Red", fg="black")
         title_label.pack(pady=20)
 
-        register_button = tk.Button(protect_frame, text="Email Us", command=self.open_linke, font=("Helvetica", 14), fg="black")
+        register_button = tk.Button(protect_frame, text="IBNS", command=self.open_linke, font=("Helvetica", 14), fg="black")
         register_button.pack()
 
         global email_label
@@ -148,33 +148,32 @@ class MyApp:
 # The about Page
     def open_about_page(self):
         self.clear_screen()
-        # Load the image
         img_path = "img.png"
         self.bg_image = PhotoImage(file=img_path)
         # Create a label to display the background image
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        about_frame = tk.Frame(self.root, bg="light blue")
+        about_frame = tk.Frame(self.root, bg="dark blue")
         about_frame.pack()
 
         title_label = tk.Label(about_frame, text="About Us Page", font=("Helvetica", 24), bg="green", fg="black")
         title_label.pack(pady=20)
 
-        about_text = "This collaborative Python project is the result of the combined efforts of three students\n"\
-        "Zafran, Ahad, and Huzaifa, enrolled in the 5th semester of the BS IT program at Mirpur University of Science and Technology\n"\
-        "Crafted using fundamental code and leveraging online tools, this mini project showcases their skills and creativity.\n"\
-            "Gratitude for exploring this endeavor! Thank you"
+        about_text = "You Can Contact US \n"\
+        "Abdul Ahad: gokuahad11@gmail.com \n"\
+        "Syed Zafran Haider: zraaeae@gmail.com\n"\
+        "Huzaifa iftikhar: Ph# +92 323 9583860 "
         
         about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
         about_label.pack()
 #credits Button here
-        ver_button = tk.Button(self.root, text="Credits", command=self.open_linked, font=("Helvetica", 14), fg="black")
-        ver_button.pack()
+       # ver_button = tk.Button(self.root, text="Credits", command=self.open_linked, font=("Helvetica", 14), fg="black")
+        #ver_button.pack()
 
-        global ver_b
-        ver_b = tk.Label(self.root, text="", font=("Helvetica", 14), fg="black")
-        ver_b.pack()
+        #global ver_b
+        #ver_b = tk.Label(self.root, text="", font=("Helvetica", 14), fg="black")
+        #ver_b.pack()
 
         back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
         back_button.pack()
@@ -189,7 +188,7 @@ class MyApp:
         webbrowser.open("zraaeae@gmail.com")
 #Email Us Button Function
     def open_linke(self):
-        email_label.config(text="Email Here: zraaeae@gmail.com")
+        email_label.config(text="Syed Zafran Haider IBN: PK40TMFB0000000061821888 \n""Abdul AHad IBN: PK31TMFB0000000062769837\n")
 
 #The version button function
     def open_linked(self):
