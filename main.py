@@ -70,19 +70,19 @@ class MyApp:
         protect_frame = tk.Frame(self.root, bg="dark blue")
         protect_frame.pack()
 
-        title_label = tk.Label(protect_frame, text="Protect Piracy Page", font=("Helvetica", 24), bg="yellow", fg="black")
+        title_label = tk.Label(protect_frame, text="Protect Piracy Page", font=("Helvetica", 14), bg="yellow", fg="black")
         title_label.pack(pady=20)
 
-        register_button = tk.Button(protect_frame, text="Register Software", command=self.open_link, font=("Helvetica", 14), fg="black")
+        register_button =tk.Button(protect_frame, text="Register Software", command=self.open_link, font=("Helvetica", 10), fg="black")
         register_button.pack()
 
-        lock_button = tk.Button(protect_frame, text="Pack", command=lambda: Popen(["python","packer.pak"]), font=("Helvetica", 14), fg="black")
+        lock_button = tk.Button(protect_frame, text="Pack", command=lambda: Popen(["python","packer.pak"]), font=("Helvetica", 10), fg="black")
         lock_button.pack()
 
-        encrypt_button = tk.Button(protect_frame, text="Encrypt-Decrypt", command=lambda: Popen(["python","enc.pak"]), font=("Helvetica", 14), fg="black")
+        encrypt_button = tk.Button(protect_frame, text="Encrypt-Decrypt", command=lambda: Popen(["python","enc.pak"]), font=("Helvetica", 10), fg="black")
         encrypt_button.pack()
 
-        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
+        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
         back_button.pack()
 # The Help Page
     def open_help(self):
@@ -118,7 +118,7 @@ class MyApp:
         about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
         about_label.pack()
 
-        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
+        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
         back_button.pack()
 # The Report Bug Page
     def bug_page(self):
@@ -136,14 +136,14 @@ class MyApp:
         title_label = tk.Label(protect_frame, text="Donate Us", font=("Helvetica", 24), bg="Red", fg="black")
         title_label.pack(pady=20)
 
-        register_button = tk.Button(protect_frame, text="IBNS", command=self.open_linke, font=("Helvetica", 14), fg="black")
+        register_button = tk.Button(protect_frame, text="IBNS", command=self.open_linke, font=("Helvetica", 10), fg="black")
         register_button.pack()
 
         global email_label
-        email_label = tk.Label(protect_frame, text="", font=("Helvetica", 14), fg="black")
+        email_label = tk.Label(protect_frame, text="", font=("Helvetica", 10), fg="black")
         email_label.pack()
 
-        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
+        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
         back_button.pack()
 # The about Page
     def open_about_page(self):
@@ -165,7 +165,7 @@ class MyApp:
         "Syed Zafran Haider: zraaeae@gmail.com\n"\
         "Huzaifa iftikhar: Ph# +92 323 9583860 "
         
-        about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
+        about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 10), bg="white", fg="black")
         about_label.pack()
 #credits Button here
        # ver_button = tk.Button(self.root, text="Credits", command=self.open_linked, font=("Helvetica", 14), fg="black")
@@ -175,7 +175,7 @@ class MyApp:
         #ver_b = tk.Label(self.root, text="", font=("Helvetica", 14), fg="black")
         #ver_b.pack()
 
-        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 14), fg="black")
+        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
         back_button.pack()
 
     def visit_link(self):
