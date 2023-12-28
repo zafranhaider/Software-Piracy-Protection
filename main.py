@@ -67,23 +67,20 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        protect_frame = tk.Frame(self.root, bg="dark blue")
-        protect_frame.pack()
+        title_label = tk.Label(self.root, text="Protect Piracy Page", font=("Helvetica", 14), bg="yellow", fg="black")
+        title_label.pack(pady=(100, 50))  # Adjust the pady values to control vertical spacing
 
-        title_label = tk.Label(protect_frame, text="Protect Piracy Page", font=("Helvetica", 14), bg="yellow", fg="black")
-        title_label.pack(pady=20)
+        register_button = ttk.Button(self.root, text="Register Software", command=self.open_link)
+        register_button.pack(pady=10)
 
-        register_button =tk.Button(protect_frame, text="Register Software", command=self.open_link, font=("Helvetica", 10), fg="black")
-        register_button.pack()
+        lock_button = ttk.Button(self.root, text="Pack", command=lambda: Popen(["python", "packer.pak"]))
+        lock_button.pack(pady=10)
 
-        lock_button = tk.Button(protect_frame, text="Pack", command=lambda: Popen(["python","packer.pak"]), font=("Helvetica", 10), fg="black")
-        lock_button.pack()
+        encrypt_button = ttk.Button(self.root, text="Encrypt-Decrypt", command=lambda: Popen(["python", "enc.pak"]))
+        encrypt_button.pack(pady=10)
 
-        encrypt_button = tk.Button(protect_frame, text="Encrypt-Decrypt", command=lambda: Popen(["python","enc.pak"]), font=("Helvetica", 10), fg="black")
-        encrypt_button.pack()
-
-        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
-        back_button.pack()
+        back_button = ttk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu)
+        back_button.pack(pady=10)
 # The Help Page
     def open_help(self):
         self.clear_screen()
@@ -93,11 +90,8 @@ class MyApp:
         # Create a label to display the background image
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
-
-        about_frame = tk.Frame(self.root, bg="dark blue")
-        about_frame.pack()
-
-        title_label = tk.Label(about_frame, text="Help Page", font=("Helvetica", 24), bg="blue", fg="black")
+        
+        title_label = tk.Label(self.root, text="Help Page", font=("Helvetica", 24), bg="blue", fg="black")
         title_label.pack(pady=20)
 
         about_text = "Register Button will Lead you to register website Of USA gov\n"\
@@ -112,13 +106,12 @@ class MyApp:
                      "First You Have To Click Browse then Click Encrypt Done\n"\
                      "Now You can Decrypt it Anytime You want \n"\
                      "Just Browse Again and Click Decrypt Done\n"\
-                     "________________________________________________________________________________\n"\
-                     
-                        
-        about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
+                     "________________________________________________________________________________\n"
+
+        about_label = tk.Label(self.root, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
         about_label.pack()
 
-        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
+        back_button = ttk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu)
         back_button.pack()
 # The Report Bug Page
     def bug_page(self):
@@ -130,20 +123,17 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        protect_frame = tk.Frame(self.root, bg="dark blue")
-        protect_frame.pack()
-
-        title_label = tk.Label(protect_frame, text="Donate Us", font=("Helvetica", 24), bg="Red", fg="black")
+        title_label = ttk.Label(self.root, text="Donate Us")
         title_label.pack(pady=20)
 
-        register_button = tk.Button(protect_frame, text="IBNS", command=self.open_linke, font=("Helvetica", 10), fg="black")
+        register_button = ttk.Button(self.root, text="IBNS", command=self.open_linke)
         register_button.pack()
 
         global email_label
-        email_label = tk.Label(protect_frame, text="", font=("Helvetica", 10), fg="black")
+        email_label = tk.Label(self.root, text="", font=("Helvetica", 10), fg="black")
         email_label.pack()
 
-        back_button = tk.Button(protect_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
+        back_button = ttk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu)
         back_button.pack()
 # The about Page
     def open_about_page(self):
@@ -154,19 +144,19 @@ class MyApp:
         self.bg_label = tk.Label(root, image=self.bg_image)
         self.bg_label.place(relwidth=1, relheight=1)
 
-        about_frame = tk.Frame(self.root, bg="dark blue")
-        about_frame.pack()
-
-        title_label = tk.Label(about_frame, text="About Us Page", font=("Helvetica", 24), bg="green", fg="black")
+        title_label = tk.Label(self.root, text="About Us Page", font=("Helvetica", 24), bg="green", fg="black")
         title_label.pack(pady=20)
 
         about_text = "You Can Contact US \n"\
-        "Abdul Ahad: gokuahad11@gmail.com \n"\
-        "Syed Zafran Haider: zraaeae@gmail.com\n"\
-        "Huzaifa iftikhar: Ph# +92 323 9583860 "
+            "Abdul Ahad: gokuahad11@gmail.com \n"\
+            "Syed Zafran Haider: zraaeae@gmail.com\n"\
+            "Huzaifa Iftikhar: Ph# +92 323 9583860 "
         
-        about_label = tk.Label(about_frame, text=about_text, font=("Helvetica", 10), bg="white", fg="black")
+        about_label = tk.Label(self.root, text=about_text, font=("Helvetica", 10), bg="white", fg="black")
         about_label.pack()
+
+        back_button = tk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu, font=("Helvetica", 10), fg="black")
+        back_button.pack()
 #credits Button here
        # ver_button = tk.Button(self.root, text="Credits", command=self.open_linked, font=("Helvetica", 14), fg="black")
         #ver_button.pack()
@@ -175,7 +165,7 @@ class MyApp:
         #ver_b = tk.Label(self.root, text="", font=("Helvetica", 14), fg="black")
         #ver_b.pack()
 
-        back_button = tk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu(), font=("Helvetica", 10), fg="black")
+        back_button = ttk.Button(about_frame, text="Back To Main Menu", command=lambda: self.create_main_menu())
         back_button.pack()
 
     def visit_link(self):
