@@ -1,5 +1,6 @@
 from cryptography.fernet import Fernet
 import tkinter as tk
+import tkinter as ttk
 from tkinter import filedialog, messagebox
 import os
 
@@ -7,7 +8,6 @@ class EncryptionUtility:
     def __init__(self, root):
         self.root = root
         self.root.title("File Encryptor/Decryptor")
-
         # File path variable
         self.file_path = tk.StringVar()
 
@@ -24,15 +24,19 @@ class EncryptionUtility:
         self.create_ui()
 
     def create_ui(self):
+        # Frame for better organization
+        frame = tk.Frame(self.root, padx=10, pady=10)
+        frame.pack(padx=20, pady=20)
+
         # File selection
-        tk.Label(self.root, text="Select a File:").pack(pady=10)
-        tk.Button(self.root, text="Browse", command=self.browse_file).pack()
+        tk.Label(frame, text="Select a File:").grid(row=0, column=0, sticky="w", pady=10)
+        entry = tk.Entry(frame, textvariable=self.file_path, width=40)
+        entry.grid(row=0, column=1, padx=5)
+        ttk.Button(frame, text="Browse", command=self.browse_file).grid(row=0, column=2, padx=5)
 
-        # Encrypt Button
-        tk.Button(self.root, text="Encrypt", command=self.encrypt_file).pack(pady=10)
-
-        # Decrypt Button
-        tk.Button(self.root, text="Decrypt", command=self.decrypt_file).pack(pady=10)
+        # Encrypt and Decrypt Buttons
+        ttk.Button(frame, text="Encrypt", command=self.encrypt_file).grid(row=1, column=0, pady=10)
+        ttk.Button(frame, text="Decrypt", command=self.decrypt_file).grid(row=1, column=1, pady=10)
 
     def browse_file(self):
         file_path = filedialog.askopenfilename()

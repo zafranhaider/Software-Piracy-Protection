@@ -1,40 +1,52 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import shutil
 import os
 
-def backup_folder():
-    source_folder = filedialog.askdirectory(title="Select Folder to Backup")
-    if not source_folder:
-        return  # User canceled the folder selection
+class FolderBackupApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Folder Backup Tool")
 
-    destination_folder = filedialog.askdirectory(title="Select Backup Destination")
-    if not destination_folder:
-        return  # User canceled the destination folder selection
+        # Set the initial position of the window to be in the middle of the screen
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+        window_width = 0
+        window_height = 0
+        x_position = (screen_width - window_width) // 6
+        y_position = (screen_height - window_height) // 6
+        root.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
 
-    try:
-        # Construct the destination path
-        backup_folder_name = os.path.basename(source_folder) + "_backup"
-        destination_path = os.path.join(destination_folder, backup_folder_name)
+        # Prompt user to choose folders
+        self.backup_folder()
 
-        # Copy the folder
-        shutil.copytree(source_folder, destination_path)
+    def backup_folder(self):
+        source_folder = filedialog.askdirectory(title="Select Folder to Backup")
+        if not source_folder:
+            self.root.withdraw()  # Hide the window if the user cancels the folder selection
 
-        # Display success message
-        success_message = f"Backup successful! {source_folder} backed up to {destination_path}"
-        tk.messagebox.showinfo("Backup Successful", success_message)
-    except Exception as e:
-        # Display error message if an exception occurs
-        error_message = f"Error during backup: {str(e)}"
-        tk.messagebox.showerror("Backup Error", error_message)
+        destination_folder = filedialog.askdirectory(title="Select Backup Destination")
+        if not destination_folder:
+            self.root.withdraw()  # Hide the window if the user cancels the destination folder selection
 
-# Create the main window
-root = tk.Tk()
-root.title("Folder Backup Tool")
+        try:
+            # Construct the destination path
+            backup_folder_name = os.path.basename(source_folder) + "_backup"
+            destination_path = os.path.join(destination_folder, backup_folder_name)
 
-# Create a button to trigger the backup process
-backup_button = tk.Button(root, text="Backup Folder", command=backup_folder)
-backup_button.pack(pady=20)
+            # Copy the folder
+            shutil.copytree(source_folder, destination_path)
 
-# Start the main loop
-root.mainloop()
+            # Display success message
+            success_message = f"Backup successful! {source_folder} backed up to {destination_path}"
+            messagebox.showinfo("Backup Successful", success_message)
+        except Exception as e:
+            # Display error message if an exception occurs
+            error_message = f"Error during backup: {str(e)}"
+            messagebox.showerror("Backup Error", error_message)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = FolderBackupApp(root)
+    root.withdraw()  # Hide the main window
+    root.mainloop()
