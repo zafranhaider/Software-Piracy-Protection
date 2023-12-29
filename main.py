@@ -3,6 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 from pygame import mixer
 from tkinter import PhotoImage
+import subprocess
 from subprocess import Popen
 import webbrowser
 import os
@@ -23,6 +24,14 @@ class MyApp:
          def on_button_click(self):
              print("")
     play_click_sound()
+
+    def execute_locker_dialog(self):
+        try:
+            # Assuming the LockerDialog.exe is in the EXELocker folder
+            locker_dialog_path = os.path.join("EXELocker", "LockerDialog.exe")
+            subprocess.run([locker_dialog_path])
+        except Exception as e:
+            print(f"Error: {e}")
  
 # this is main page the menuw page Some pages in this Software used multiple times to 
 # Save Time Thank you 
@@ -55,7 +64,8 @@ class MyApp:
 
         self.exit_button = ttk.Button(self.root, text="Exit", command=self.root.destroy)
         self.exit_button.pack(pady=10)
-      
+
+
 
 # The Protect Page 
     def open_protect_page(self):
@@ -73,10 +83,16 @@ class MyApp:
         register_button = ttk.Button(self.root, text="Register Software", command=self.open_link)
         register_button.pack(pady=10)
 
-        lock_button = ttk.Button(self.root, text="Pack", command=lambda: Popen(["python", "packer.pak"]))
+        lock_button = ttk.Button(self.root, text="Lock Your EXE", command=self.execute_locker_dialog)
         lock_button.pack(pady=10)
 
         encrypt_button = ttk.Button(self.root, text="Encrypt-Decrypt", command=lambda: Popen(["python", "enc.pak"]))
+        encrypt_button.pack(pady=10)
+
+        lock_button = ttk.Button(self.root, text="Pack into Zip", command=lambda: Popen(["python", "packer.pak"]))
+        lock_button.pack(pady=10)
+
+        encrypt_button = ttk.Button(self.root, text="Backup Folder", command=lambda: Popen(["python", "back.pak"]))
         encrypt_button.pack(pady=10)
 
         back_button = ttk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu)
@@ -97,16 +113,24 @@ class MyApp:
         about_text = "Register Button will Lead you to register website Of USA gov\n"\
                      "You can Create Account and Register The Product Directly\n"\
                      "________________________________________________________________\n"\
-                     "Pack Button Will Lead you to external App In which\n"\
+                     "Exe Locker is a powerful tool that enables you to secure your executable files effectively\n"\
+                     "It provides a reliable mechanism to lock and restrict access to specific .exe files\n"\
+                     "Just Click On Browse-Chose Exe-Enter Pasword And Click Lock Done\n"\
+                     "To Unlock Click On your Locked EXE And enter Pasword Done\n"\
+                     "_________________________________________________________________\n"\
+                     "Pack-Will Lead you to Ziping File In which\n"\
                      "First You Have To Browse The App or File Then you Have To click Pack \n"\
                      "And after Clicking Pack You can also unpack it by Unpack Button \n Or you can Extract\n"\
                      "The File Later By 7Z Archiver Or Winrar\n"\
                      "_________________________________________________________________\n"\
-                     "Encrypt-Decrypt Button Can Help You to encrypt and Decrypt file \n"\
+                     "Encrypt-Decrypt-Can Help You to encrypt and Decrypt file \n"\
                      "First You Have To Click Browse then Click Encrypt Done\n"\
                      "Now You can Decrypt it Anytime You want \n"\
                      "Just Browse Again and Click Decrypt Done\n"\
-                     "________________________________________________________________________________\n"
+                     "________________________________________________________________________________\n"\
+                     "Backup-This Feature can be use for creating extra copy of you software\n"\
+                     "Just select the folder and then destination Done\n"\
+                     "Your Data Will be copied\n"\
 
         about_label = tk.Label(self.root, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
         about_label.pack()
