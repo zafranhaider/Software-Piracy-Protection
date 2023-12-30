@@ -12,7 +12,7 @@ class MyApp:
         self.root = root
         root.title("Software Protection Application")
         root.geometry("1366x768")
-        #root.configure(bg="gray")
+        root.configure(bg="gray")
         self.create_main_menu()
     def play_click_sound():
         mixer.init()
@@ -29,6 +29,13 @@ class MyApp:
         try:
             # Assuming the LockerDialog.exe is in the EXELocker folder
             locker_dialog_path = os.path.join("EXELocker", "LockerDialog.exe")
+            subprocess.run([locker_dialog_path])
+        except Exception as e:
+            print(f"Error: {e}")
+    def execute_scan_dialog(self):
+        try:
+            # Assuming the LockerDialog.exe is in the EXELocker folder
+            locker_dialog_path = os.path.join("scan", "SpyCore.exe")
             subprocess.run([locker_dialog_path])
         except Exception as e:
             print(f"Error: {e}")
@@ -86,10 +93,13 @@ class MyApp:
         lock_button = ttk.Button(self.root, text="Lock Your EXE", command=self.execute_locker_dialog)
         lock_button.pack(pady=10)
 
+        lock_button = ttk.Button(self.root, text="Scan Your EXE", command=self.execute_scan_dialog)
+        lock_button.pack(pady=10)
+
         encrypt_button = ttk.Button(self.root, text="Encrypt-Decrypt", command=lambda: Popen(["python", "enc.pak"]))
         encrypt_button.pack(pady=10)
 
-        lock_button = ttk.Button(self.root, text="Pack into Zip", command=lambda: Popen(["python", "packer.pak"]))
+        lock_button = ttk.Button(self.root, text="Pack into Zip File", command=lambda: Popen(["python", "packer.pak"]))
         lock_button.pack(pady=10)
 
         encrypt_button = ttk.Button(self.root, text="Backup Folder", command=lambda: Popen(["python", "back.pak"]))
@@ -109,6 +119,7 @@ class MyApp:
         
         title_label = tk.Label(self.root, text="Help Page", font=("Helvetica", 24), bg="blue", fg="black")
         title_label.pack(pady=20)
+        
 
         about_text = "Register Button will Lead you to register website Of USA gov\n"\
                      "You can Create Account and Register The Product Directly\n"\
@@ -117,6 +128,11 @@ class MyApp:
                      "It provides a reliable mechanism to lock and restrict access to specific .exe files\n"\
                      "Just Click On Browse-Chose Exe-Enter Pasword And Click Lock Done\n"\
                      "To Unlock Click On your Locked EXE And enter Pasword Done\n"\
+                     "_________________________________________________________________\n"\
+                     "Scan Your EXE Option Will Scan Your App From Any Dangerous and Harmfull Virus\n"\
+                     "First Go To website VirusTool and Sign in then Copy Your API KeY From API In Profile Section\n"\
+                     "Then Go Back To App Go to Setting Icon and Paste Your API Key in API Section Done\n"\
+                     "Now Go To MAIN And Select EXE File And Click Scan \n"\
                      "_________________________________________________________________\n"\
                      "Pack-Will Lead you to Ziping File In which\n"\
                      "First You Have To Browse The App or File Then you Have To click Pack \n"\
@@ -132,7 +148,7 @@ class MyApp:
                      "Just select the folder and then destination Done\n"\
                      "Your Data Will be copied\n"\
 
-        about_label = tk.Label(self.root, text=about_text, font=("Helvetica", 14), bg="white", fg="black")
+        about_label = tk.Label(self.root, text=about_text, font=("Helvetica", 12), bg="white", fg="black")
         about_label.pack()
 
         back_button = ttk.Button(self.root, text="Back To Main Menu", command=self.create_main_menu)
