@@ -13,9 +13,10 @@ def create_main_window():
 
     # Set the GUI resolution to 1366x768
     root.geometry("1366x768")
+    root.attributes('-fullscreen', True)
 
     # Add background image
-    background_image = PhotoImage(file="img.png")
+    background_image = PhotoImage(file="p2.png")
     background_label = Label(root, image=background_image)
     background_label.place(relwidth=1, relheight=1)
 
