@@ -40,16 +40,8 @@ class MyApp:
 # this is main page the menuw page Some pages in this Software used multiple times to 
 # Save Time Thank you 
 
-    def on_enter(event):
-        event.widget.configure(style='Hover.TButton')
-    pass
-    
-
     def create_main_menu(self):
         self.clear_screen()
-        # Load the image
-   
-    
         # Create a transparent image
         transparent_image = Image.new("RGBA", (1, 1), (0, 0, 0, 0))
         transparent_photo = ImageTk.PhotoImage(transparent_image)
@@ -80,16 +72,10 @@ class MyApp:
 
         # Configure TButton style for green background and red border
         style.configure("TButton",
-                        background="Black",
-                        foreground="black",  # Text color
-                        bordercolor="black",
-                        lightcolor="black",
-                        darkcolor="black",  
-                        relief="black",
-                        highlightcolor="Red")
+                        
+                        foreground="black")
         style.map("TButton",
-              background=[("active", "green")]) # Border style
-        
+              background=[("active", "blue")]) # Border style
 
         self.protect_button = ttk.Button(self.root, text="Protect Piracy", command=self.open_protect_page, style="TButton",width=25,)
         self.protect_button.place(y=340, anchor='w', relx=0, rely=0, x=15)
@@ -291,6 +277,7 @@ class MyApp:
         back_button.pack()
 
     def visit_link(self):
+        pass
         webbrowser.open("https://www.linkedin.com/in/syed-zafran-haider/")
 
     def open_link(self):
