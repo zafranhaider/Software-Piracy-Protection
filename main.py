@@ -147,7 +147,7 @@ class MyApp:
 
         exit_button = ttk.Button(self.root, text="Exit", command=self.root.destroy, width=25, style="TButton")
         exit_button.place(y=590, anchor='w', relx=0, rely=0, x=15)
-# The Help Page
+# Help Page
     def open_help(self):
         self.clear_screen()
         # Load the image
